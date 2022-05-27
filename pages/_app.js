@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import "../bootstrap.min2.css";
 import { store } from "../utils/redux/store";
 import { Provider } from "react-redux";
-import Layout from "../components/Layout";
+import Layout from "../components/layout";
 import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
