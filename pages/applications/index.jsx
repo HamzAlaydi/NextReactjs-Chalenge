@@ -1,7 +1,7 @@
 import { Container } from "@mui/system";
 import Head from "next/head";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import DataTable from "../../components/applications-components/DataTable";
 import SearchForm from "../../components/applications-components/SearchForm";
 import { saveData, setInitialData } from "../../utils/redux/reducers";

@@ -10,12 +10,11 @@ import { filterData } from "../../utils/redux/reducers";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schema } from "../../utils/schema";
 import { saveData } from "../../utils/redux/reducers";
+
 const SearchForm = () => {
   //redux toolkit
   const { initialData } = useSelector((state) => state.dataSlice);
-  const { savedData } = useSelector((state) => state.dataSlice);
   const dispatch = useDispatch();
-
   //React Hook Form Library https://react-hook-form.com/
   const {
     control,
@@ -28,15 +27,15 @@ const SearchForm = () => {
       actionType: "",
       applicationType: "",
       applicationId: "",
-      fromDate: null,
-      toDate: null,
+      fromDate: new Date("31 December 2021"),
+      toDate: new Date(),
     },
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
     dispatch(filterData(data));
-    // console.log(data);
+    console.log("dispatch");
   };
 
   //Handle Clear Filtration
@@ -118,13 +117,18 @@ const SearchForm = () => {
             )}
           />
 
-          {/* fromDate */}
+          {/* from Date */}
 
           <Controller
             name="fromDate"
             control={control}
             render={({ field }) => (
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <LocalizationProvider
+                dateAdapter={AdapterDateFns}
+                onChange={(value) =>
+                  onChange(moment(value).format("YYYY-MM-DD"))
+                }
+              >
                 <DatePicker
                   label="From Date"
                   renderInput={(params) => <TextField {...params} />}
@@ -136,7 +140,7 @@ const SearchForm = () => {
             )}
           />
 
-          {/* toDate */}
+          {/* to Date */}
 
           <Controller
             name="toDate"

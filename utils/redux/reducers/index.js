@@ -15,13 +15,17 @@ export const dataSlice = createSlice({
     saveData: (state, action) => {
       state.savedData = action.payload;
     },
+
     filterData: (state, action) => {
       state.savedData = state.initialData.filter((a) => {
         return (
           a.actionType === action.payload.actionType ||
           a.applicationType === action.payload.applicationType ||
           a.logId == action.payload.applicationId ||
-          a.creationTimestamp === action.payload.fromDate
+          (new Date(a.creationTimestamp).getTime() >
+            new Date(action.payload.fromDate).getTime() &&
+            new Date(a.creationTimestamp).getTime() <
+              new Date(action.payload.toDate).getTime())
         );
       });
     },

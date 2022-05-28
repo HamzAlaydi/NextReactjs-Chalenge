@@ -1,8 +1,8 @@
 import "../styles/globals.css";
 import "../bootstrap.min2.css";
 import { store } from "../utils/redux/store";
+import Layout from "../components/layout";
 import { Provider } from "react-redux";
-import Layout from "../components/Layout";
 import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
