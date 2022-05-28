@@ -3,10 +3,7 @@ import "../bootstrap.min2.css";
 import { store } from "../utils/redux/store";
 import Layout from "../components/layout";
 import { Provider } from "react-redux";
-<<<<<<< HEAD
-=======
-import Layout from "../components/layout";
->>>>>>> 1370d3b4c20ccb6f346eefef4e7b20ae3411d362
+
 import Head from "next/head";
 function MyApp({ Component, pageProps }) {
   return (
